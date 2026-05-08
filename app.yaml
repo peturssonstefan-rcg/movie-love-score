@@ -1,0 +1,1 @@
+command: ["uv", "run", "databricks-mcp-example"] # This name must match pyproject.t
