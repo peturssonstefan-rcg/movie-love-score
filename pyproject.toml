@@ -7,4 +7,4 @@ requires-python = ">=3.12"
 dependencies = ["mcp", "uv", "databricks-sdk"]
 
 [project.scripts]
-mcp-server = "server.main:main"
+databricks-mcp-example = "server.main:main"

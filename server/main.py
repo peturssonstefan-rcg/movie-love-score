@@ -1,8 +1,9 @@
+import os
 import random
 from mcp.server.fastmcp import FastMCP
 
-# Initialize the MCP server
-mcp = FastMCP("MovieAnalytics")
+port = int(os.environ.get("DATABRICKS_APP_PORT", "8000"))
+mcp = FastMCP("MovieAnalytics", host="0.0.0.0", port=port)
 
 @mcp.tool()
 def get_movie_love_score(movie_title: str) -> str:
@@ -23,5 +24,8 @@ def get_movie_love_score(movie_title: str) -> str:
 
     return f"The Love Score for '{movie_title}' is {score}/10. {sentiment}"
 
+def main():
+    mcp.run(transport="streamable-http")
+
 if __name__ == "__main__":
-    mcp.run()
+    main()
